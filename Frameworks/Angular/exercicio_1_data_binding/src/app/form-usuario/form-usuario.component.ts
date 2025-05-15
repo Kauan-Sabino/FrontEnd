@@ -30,7 +30,7 @@ export class FormUsuarioComponent {
     !this.telefone|| 
     !this.genero ||
     !this.idade ||
-    !this.profissao 
+    !this.profissao
     )
   }
 }
