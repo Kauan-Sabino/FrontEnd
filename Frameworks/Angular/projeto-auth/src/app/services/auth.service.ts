@@ -16,12 +16,15 @@ export class AuthService {
 
   constructor(private router: Router,private http:HttpClient) { }
 
+  //busca no banco se o email do cadastro já existe
   registrar(usuario:any):Observable<any>{
     return this.http.get<any[]>(`${this.apiUrl}?email=${usuario.email}`).pipe(
       switchMap(usuarios =>{
-        if(usuarios.length>0){
+        if(usuarios.length>0){//se existir
+          //cria uma mensagem de erro pra ser tratado no try/catch
           return throwError(()=> new Error("usuario já cadastrdo" ));
-        }else {
+        }else {//se não existir
+          //cadastra no banco de dados
           return this.http.post<any>(this.apiUrl,usuario);
         }
       })
@@ -29,19 +32,36 @@ export class AuthService {
   
   }
 
-  login(credenciais:any):Observable<boolean>{
+  login(credenciais:any):Observable<boolean>{//pega as credenciais do usuario
+    //verifica no banco se o email e senha foram encontrados
     return this.http.get<any[]>(`${this.apiUrl}?email=${credenciais.email}&senha=${credenciais.senha}`).pipe(
       map(usuarios => {
         if(usuarios.length>0){
+          //armazena as informações do usuario e a chave no localStorage
           localStorage.setItem(this.CHAVE_AUTH,JSON.stringify(usuarios[0]));
+          //retorna acesso permitido
           return true;
-        }else{
+        }else{//se não foi encontrado
           //fazer um erro
-          return false;
+          return false;//retorna que o usuario não foi permitido
         }
       })
     )
   }
 
-  logout(){}
+  //desloga e leva para a pagina home
+  logout(){
+    localStorage.removeItem(this.CHAVE_AUTH);//remove a chave de autentificação
+    this.router.navigate(['/home']);
+  }
+  //verificar se o usuario está logado
+  estaAutenticado():boolean{
+    //transformar uma variavel do tipo texto em boolean
+    return !! localStorage.getItem(this.CHAVE_AUTH);  
+  }
+
+  getUsuarioAtual():any{
+    //retorna as informações do usuario autenticado, que estão armazenadas no localStorage
+    return JSON.parse(localStorage.getItem(this.CHAVE_AUTH) || "{}");
+  }
 }

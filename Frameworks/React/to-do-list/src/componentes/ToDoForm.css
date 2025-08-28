@@ -1,0 +1,22 @@
+/*estilização para o formulario da tarefa*/
+
+form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: auto;
+}
+
+input {
+    padding:20px;
+    font-size: 16px;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.btnEnviar{
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+    background-color: aqua;
+}
