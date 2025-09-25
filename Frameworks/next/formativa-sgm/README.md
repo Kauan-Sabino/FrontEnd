@@ -111,7 +111,7 @@ graph TD
         caso2([Gerenciar Ordens de Serviço - CRUD])
         caso3([Gerenciar Equipamento - CRUD])
         caso4([Gerenciar Usuários])
-        caso5({Acessar o DashBoard})
+        caso5([Acessar o DashBoard])
     end
 
     Tecnico([Técnico de manutenção])
@@ -135,6 +135,6 @@ graph TD
     caso1 -.-> caso3
     caso1 -.-> caso4
     caso1 -.-> caso5
-    
+
 
 ```
