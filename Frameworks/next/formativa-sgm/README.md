@@ -87,6 +87,7 @@ classDiagram
         +Crud()
     }
 
-    Usuario "1" -- "1+" OrdemServico: "é responsavel por" Equipamento "1" -- "1+" OrdemServico: "associada a" 
+    Usuario "1" -- "1+" OrdemServico: "é responsavel por"
+    Equipamento "1" -- "1+" OrdemServico: "associada a" 
  
 ```
