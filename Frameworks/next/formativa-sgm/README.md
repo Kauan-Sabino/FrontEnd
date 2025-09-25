@@ -138,3 +138,26 @@ graph TD
 
 
 ```
+
+3. ### Fluxo
+Detalha o passo a passo que para realizar uma açãono sistema
+
+- Diagrama de Fluxo do Login
+    - O Usuário acessa a tela de login
+    - Insere as credenciais
+    - O sistema Verifica as Credenciais
+        - se sim: gera um JWT (Token) => Dashboard
+        - se não: manda uma mensagem de erro - Permanecena tela de Login
+
+```mermaid
+
+graph TD
+    A[Início] --> B{Acessa a tela de login}
+    B --> C[Preencher Email e senha]
+    C --> D{Validar as Credenciais}
+    D --> SIM --> E[Gerar um token JWT]
+    E --> F[DashBoard]
+    D --> NÃO --> G [Mensagem de Erro]
+    G --> E
+
+```
