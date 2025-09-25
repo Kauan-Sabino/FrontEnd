@@ -157,7 +157,7 @@ graph TD
     C --> D{Validar as Credenciais}
     D --> SIM --> E[Gerar um token JWT]
     E --> F[DashBoard]
-    D --> NÃO --> G [Mensagem de Erro]
+    D --> NÃO --> G[Mensagem de Erro]
     G --> E
 
 ```
