@@ -119,7 +119,7 @@ graph TD
     Admin([Administrador do Sistema])
 
     Tecnico --> caso1
-    tecnico --> caso3
+    tecnico --> caso2
     tecnico --> caso5
 
     Gerente --> caso1
