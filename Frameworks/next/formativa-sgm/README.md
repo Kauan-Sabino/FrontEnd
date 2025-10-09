@@ -161,3 +161,7 @@ graph TD
     G --> E
 
 ```
+
+## Prototipos
+
+## Codificação
